@@ -13,7 +13,7 @@ num = random.randint(1,88)
 
 desired_character = input("Which character ID would you like to be? (1-88)For Character IDs please refer to README (If you want random please enter: N): ")
 
-if desired_character != "N" or desired_character != "n":
+if desired_character != "N" and desired_character != "n":
     num = int(desired_character)
 elif desired_character == "N" or desired_character == "n":
     num = random.randint(1,88)
@@ -21,11 +21,15 @@ elif desired_character == "N" or desired_character == "n":
 character_url = f"https://swapi.dev/api/people/{num}/"
 response = requests.get(character_url)
 
+
 if response.status_code == 200:
     character = response.json()
-    print("You got:", character["name"])
+    print("Fetching character...")
+    print("Character Fetched!")
+    print(f"You got {character['name']}  ")
 else:
     print("That character ID doesn’t exist, rerun.")
+
 
 
 length = input("How long should the responses to be? (short, medium, long)(Please enter in all lower case): ")
