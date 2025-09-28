@@ -43,7 +43,7 @@ def conversation(client, question, length):
             f"Height: {character['height']}, Mass: {character['mass']}, "
             f"Birth Year: {character['birth_year']}. "
             f"Take in the following question: {question} and respond in character."
-            f"Also take into consideration that your responses should be {length}."
+            f"Also take into consideration that your responses should be {length}.(Short: 1-2 sentences, Medium: 3-4 sentences, Long: 5+ sentences)"
         )
     )
     return response.text
