@@ -2,7 +2,7 @@ import requests
 import random
 from google import genai
 
-API_KEY = "" 
+API_KEY = "AIzaSyDnH8K6JObrOJOFcQqwgMb6KHX5N5hi1P8" 
 client = genai.Client(api_key=API_KEY)
 
 # --- Helper function to fetch characters ---
