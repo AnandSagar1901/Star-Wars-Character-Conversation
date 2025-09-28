@@ -11,6 +11,13 @@ data = response.json()
 
 num = random.randint(1,88)
 
+desired_character = input("Which character ID would you like to be? (1-88)For Character IDs please refer to README (If you want random please enter: N): ")
+
+if desired_character != "N" or desired_character != "n":
+    num = int(desired_character)
+elif desired_character == "N" or desired_character == "n":
+    num = random.randint(1,88)
+
 character_url = f"https://swapi.dev/api/people/{num}/"
 response = requests.get(character_url)
 
@@ -21,9 +28,9 @@ else:
     print("That character ID doesn’t exist, rerun.")
 
 
-print(character["name"])
+length = input("How long should the responses to be? (short, medium, long)(Please enter in all lower case): ")
 
-def conversation(client, question):
+def conversation(client, question, length):
     response = client.models.generate_content(
         model="gemini-2.0-flash",
         contents=(
@@ -32,6 +39,7 @@ def conversation(client, question):
             f"Height: {character['height']}, Mass: {character['mass']}, "
             f"Birth Year: {character['birth_year']}. "
             f"Take in the following question: {question} and respond in character."
+            f"Also take into consideration that your responses should be {length}."
         )
     )
     return response.text
@@ -39,8 +47,8 @@ def conversation(client, question):
 
 while True:
     question = input("Ask your question (or type 'Y' to quit): ")
-    if question.upper() == "Y":
+    if question == "Y":
         break
 
-    answer = conversation(client, question)
-    print(f"{character['name']}: {answer}")
+    answer = conversation(client, question, length)
+    print(f"{character['name']} says: {answer}")
