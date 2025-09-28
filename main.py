@@ -23,9 +23,24 @@ else:
 
 print(character["name"])
 
-def conversation(client):
+def conversation(client, question):
     response = client.models.generate_content(
         model="gemini-2.0-flash",
-        contents="Answer my questions and talk as if you are " + character["name"],
+        contents=(
+            f"You are {character['name']} from Star Wars. "
+            f"Speak in their tone. Here are your details: "
+            f"Height: {character['height']}, Mass: {character['mass']}, "
+            f"Birth Year: {character['birth_year']}. "
+            f"Take in the following question: {question} and respond in character."
+        )
     )
     return response.text
+
+
+while True:
+    question = input("Ask your question (or type 'Y' to quit): ")
+    if question.upper() == "Y":
+        break
+
+    answer = conversation(client, question)
+    print(f"{character['name']}: {answer}")
