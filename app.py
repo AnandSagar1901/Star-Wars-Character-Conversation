@@ -9,7 +9,7 @@ import threading
 import os
 from google import genai
 
-API_KEY = "AIzaSyDnH8K6JObrOJOFcQqwgMb6KHX5N5hi1P8"  # Put your Gemini API Key here
+API_KEY = " Put your Gemini API Key here " 
 client = genai.Client(api_key=API_KEY)
 
 # --- Helpers ---
