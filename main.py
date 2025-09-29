@@ -2,7 +2,7 @@ import requests
 import random
 from google import genai
 
-API_KEY = "AIzaSyDnH8K6JObrOJOFcQqwgMb6KHX5N5hi1P8" 
+API_KEY = " Put your Gemini API Key here " 
 client = genai.Client(api_key=API_KEY)
 
 def fetch_character(num):
